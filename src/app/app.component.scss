@@ -1,0 +1,73 @@
+@use '../mixin.scss' as mixin;
+
+.container {
+    margin: auto;
+    max-width: 1000px;
+
+    &.info-page {
+        text-align: center;
+        max-width: 1000px;
+        width: 100%;
+
+        .text-box {
+            display: flex;
+            margin: auto;
+            max-width: 80vw;
+            overflow: hidden;
+
+            .text {
+                font-size: 18px;
+                letter-spacing: 1px;
+                overflow: hidden;
+                flex-shrink: 0;
+                margin: 0;
+                padding: 10px 15px;
+                min-width: 100%;
+                white-space: nowrap;
+                animation-name: marqueeLine;
+                animation-duration: 5s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+        }
+
+    }
+}
+
+@keyframes marqueeLine {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.container-board {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+
+    .item {
+        flex: 1;
+        flex-basis: 45%;
+        min-height: 300px;
+        border-radius: 20px;
+
+        img {
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .text-overlay {
+        position: absolute;
+        bottom: -40px;
+    }
+
+    @include mixin.responsive(SM) {
+        flex-direction: row;
+    }
+}
