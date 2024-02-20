@@ -45,30 +45,47 @@
 }
 
 .container-board {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    position: relative;
+    .list-data {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        position: relative;
+        margin: 20px 0;
 
-    .item {
-        flex: 1;
-        flex-basis: 45%;
-        min-height: 300px;
-        border-radius: 20px;
+        .item {
+            flex: 1;
+            flex-basis: 45%;
+            min-height: 300px;
+            border-radius: 20px;
 
-        img {
-            object-fit: contain;
-            object-position: center;
+            img {
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+
+        .text-overlay {
+            // position: absolute;
+            // bottom: -40px;
+        }
+
+        @include mixin.responsive(SM) {
+            flex-direction: row;
         }
     }
 
-    .text-overlay {
-        position: absolute;
-        bottom: -40px;
-    }
-
-    @include mixin.responsive(SM) {
-        flex-direction: row;
-    }
 }
 
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
